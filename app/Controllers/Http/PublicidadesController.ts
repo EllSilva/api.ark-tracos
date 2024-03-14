@@ -8,7 +8,7 @@ import Publicidade from 'App/Models/Publicidade'
 export default class PublicidadesController {
 
 
-    //mostrar todos AS  publicacao 
+    //mostrar todos AS  publicacao
     public async index() {
         const publicidade = await Publicidade.query().preload('comentarios')
         return {
@@ -17,7 +17,7 @@ export default class PublicidadesController {
         }
     }
 
-    //mostrar apenas uma publicacao e os seus Comentarios 
+    //mostrar apenas uma publicacao e os seus Comentarios
     public async show({ params }: HttpContextContract) {
         const publicidade = await Publicidade.findOrFail(params.id)
 
@@ -110,14 +110,12 @@ export default class PublicidadesController {
         }
     }
 
-    //eliminar publicacao 
-    public async destroy({ params }: HttpContextContract) {
-        const publicidade = await Publicidade.findOrFail(params.id)
-
-        return {
-            message: 'Publicidade excluido com sucesso',
-            data: publicidade,
-        }
+    //eliminar publicacao
+    public async destroy({ request }: HttpContextContract) {
+      const proj_id = request.param('id')
+      const publicidade = await Publicidade.findOrFail(proj_id)
+      await publicidade.delete()
+      return "Publicidade excluido com sucesso"
     }
 
 }
