@@ -11,7 +11,7 @@ export default class ColaboradoresController {
   }
 
   //CADASTRO DE PUBLICACAO
-  public async store({ params, request, response }: HttpContextContract) {
+  public async store({ request, response }: HttpContextContract) {
     const body = request.body()
     try {
       //ADICIONAR DE IMAGEM

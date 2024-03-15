@@ -11,7 +11,7 @@ export default class ProjectosController {
   }
 
   //CADASTRO DE PUBLICACAO
-  public async store({ params, request, response }: HttpContextContract) {
+  public async store({request, response }: HttpContextContract) {
     const body = request.body()
     try {
       //ADICIONAR DE IMAGEM
@@ -199,7 +199,7 @@ export default class ProjectosController {
 
 
       //FIM ENVIO DE IMAGEM
- 
+
       const projecto = await Projecto.create(body)
 
       response.status(201)

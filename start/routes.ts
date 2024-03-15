@@ -27,7 +27,7 @@ Route.group(() => {
   })
 
   Route.post('login', async ({ auth, request, response }) => {
-    const body = request.body()
+   // const body = request.body()
 
     const email = request.input('email')
     const password = request.input('password')
